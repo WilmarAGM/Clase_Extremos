@@ -19,17 +19,17 @@ export default function App() {
   ] as const
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-dark-bg text-dark-text font-sans">
+    <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden bg-dark-bg text-dark-text font-sans">
       {/* Sidebar Navigation */}
-      <nav className="w-64 bg-dark-panel flex flex-col border-r border-white/5 relative z-10 shadow-2xl">
-        <div className="p-6">
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-cyan leading-tight mb-2">
+      <nav className="w-full md:w-64 shrink-0 bg-dark-panel flex flex-col border-b md:border-b-0 md:border-r border-white/5 relative z-20 shadow-2xl">
+        <div className="p-4 md:p-6 flex flex-col md:block">
+          <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-cyan leading-tight mb-1 md:mb-2 text-center md:text-left">
             Laboratorio de la Montaña Rusa
           </h1>
-          <p className="text-xs text-slate-400 font-medium">Cálculo Diferencial SPA</p>
+          <p className="text-xs text-slate-400 font-medium hidden md:block">Cálculo Diferencial SPA</p>
         </div>
         
-        <div className="flex-1 px-4 space-y-2 mt-4">
+        <div className="flex-none md:flex-1 px-2 md:px-4 flex md:flex-col overflow-x-auto md:overflow-visible space-x-2 md:space-x-0 md:space-y-2 pb-2 md:pb-0 md:mt-4 scrollbar-hide">
           {tabs.map((tab) => {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
@@ -37,7 +37,7 @@ export default function App() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative group overflow-hidden ${
+                className={`flex-shrink-0 md:w-full flex items-center gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-xl transition-all duration-300 relative group overflow-hidden ${
                   isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -49,13 +49,13 @@ export default function App() {
                   />
                 )}
                 <Icon size={18} className={`relative z-10 transition-colors ${isActive ? 'text-neon-cyan' : 'group-hover:text-neon-cyan'}`} />
-                <span className="relative z-10 text-sm font-medium">{tab.label}</span>
+                <span className="relative z-10 text-xs md:text-sm font-medium whitespace-nowrap">{tab.label}</span>
               </button>
             )
           })}
         </div>
 
-        <div className="p-4 m-4 rounded-xl bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 border border-white/5">
+        <div className="hidden md:block p-4 m-4 rounded-xl bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 border border-white/5">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full bg-neon-green animate-pulse"></div>
             <span className="text-xs font-semibold text-neon-green uppercase tracking-wider">Sistema Activo</span>
