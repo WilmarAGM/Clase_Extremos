@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-purple: #b026ff;
+  --color-neon-cyan: #00f0ff;
+  --color-neon-green: #39ff14;
+  --color-neon-orange: #ff5e00;
+  --color-dark-bg: #0a0a0f;
+  --color-dark-panel: #13141f;
+  --color-dark-panel-hover: #1c1d2d;
+  --color-dark-text: #e2e8f0;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text);
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+    min-height: 100vh;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-panel-hover);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-purple);
+}
